@@ -20,7 +20,7 @@ telefone_responsavel varchar(11) not null
 );
 
 create table tbl_medico(
-cod_paciente int unsigned  auto_increment primary key,
+cod_medico int unsigned  auto_increment primary key,
 cod_especialidade int unsigned not null,
 nome_medico varchar(500) not null,
 telefone_medico varchar(10),
