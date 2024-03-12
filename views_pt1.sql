@@ -7,13 +7,22 @@ where cod_medico = 1;
 
 
 ##LISTAGEM MEDICO/ESPECIALIDADE####
-create view listagem_medico_especialidade as
-select tm.nome_medico, tm.telefone_medico, tm.celular_medico, tm.email_medico,
+create view listagem_medico_especialidade_aula as
+select tm.nome_medico, tm.telefone_medico, tm.celular_medico, tm.email_medico
+from tbl_medico as tm
+inner join tbl_especialidade as te
+on tm.cod_especialidade = te.cod_especialidade;
+
+
+## SALA/ESPECIALIDADE###
+
+create view listagem_sala_especialidade_aula as
+select
+ts.nro_sala,
 te.nome_especialidade
-from tbl_medico as tm;
-
-
-## SALA 
+from tbl_sala as ts
+inner join tbl_especialidade as te
+on te.cod_especialidade = ts.cod_especialidade;
 
 ## LISTAGEM AGENDA ##
 create view agenda_aula as
@@ -37,7 +46,9 @@ SELECT * FROM listagem_medico_especialidade_aula;
 SELECT * FROM listagem_sala_especialidade_aula;
 SELECT * FROM agenda_aula;
 
-
+##deletar views 
+drop view listagem_medico_especialidade_aula;
+drop view listagem_sala_especialidade_aula;
 drop view agenda_aula;
 
 
