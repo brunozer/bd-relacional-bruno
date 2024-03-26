@@ -25,3 +25,23 @@ date_delete = now();
 
 END ## Fim trigger
 $
+
+DELIMITER $
+
+
+CREATE TRIGGER trg_delete_aluno BEFORE DELETE ON tbl_alunos
+FOR EACH ROW
+BEGIN
+    INSERT INTO tbl_alunos_bkp
+    SET
+        cod_aluno = OLD.cod_aluno,
+        nome_aluno = OLD.nome_aluno,
+        telefone_aluno = OLD.telefone_aluno,
+        email_aluno = OLD.email_aluno,
+        data_exclusao = NOW();
+END$
+
+DELIMITER ;
+
+
+
